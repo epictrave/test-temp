@@ -30,7 +30,7 @@ services:
   api:
     build: .
     ports:
-      - "3030-3040:3000"
+      - "80:3000"
     tty: true
     depends_on:
       db:
