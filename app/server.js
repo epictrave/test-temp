@@ -133,8 +133,8 @@ if (cluster.isMaster) {
 
     //get temperature humidity sensor datum
     app.get('/api/sensor/temphumid/', (req, res) => {
-        const sql = `SELECT deviceID, humid, temp, DATE_FORMAT(time, '%Y년%m월%d일 %H시%m분%s초') as time \
-            FROM tempHumid where deviceID=1 ORDER BY time DESC`;
+        const sql = `SELECT deviceID, humid, temp, DATE_FORMAT(time, '%Y년%m월%d일 %H시%i분%s초') as time \
+            FROM tempHumid where deviceID=1 ORDER BY time DESC LIMIT 1`;
         conn.query(sql, (err, rows, fields) => {
             if(err) {
                 console.log(err);
