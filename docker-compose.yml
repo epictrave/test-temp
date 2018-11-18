@@ -1,0 +1,39 @@
+version: '2.1'
+
+services:
+  db:
+    image: mysql:5.7
+    volumes: 
+      - /Users/janghun/Desktop/Docker/data/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "1234"
+      MYSQL_USER: "sangsangfarm"
+      MYSQL_PASSWORD: "imggd1234"
+      TZ: 'Asia/Seoul'
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      
+    ports:
+      - "3006"
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-p1234"]
+      timeout: 20s
+      retries: 10
+  php:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "3001:80"
+    depends_on:
+      db:
+        condition: service_healthy
+    links:
+      - db
+  api:
+    build: .
+    ports:
+      - "3030-3040:3000"
+    tty: true
+    depends_on:
+      db:
+        condition: service_healthy
+    links:
+      - db

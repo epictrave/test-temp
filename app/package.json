@@ -1,0 +1,19 @@
+{
+  "name": "sangsangfarm-rest-api",
+  "version": "1.0.0",
+  "description": "SangsangFarm Rest Api server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "Janghun Lee",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0",
+    "nodemon": "^1.18.6",
+    "uuid": "^3.3.2"
+  }
+}
