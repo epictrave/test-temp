@@ -2,7 +2,7 @@ var express    = require('express');
 var mysql      = require('mysql');
 var dbconfig   = require('./config/database.js');
 var conn = mysql.createConnection({
-  host     : 'docker_db_1',
+  host     : 'mysql',
   user     : 'root',
   password : '1234',
   port     : 3306,
@@ -21,7 +21,7 @@ var instance_id = uuid.v4();
  * 워커 생성
  */
 var cpuCount = os.cpus().length; //CPU 수
-var workerCount = cpuCount/2; //2개의 컨테이너에 돌릴 예정 CPU수 / 2
+var workerCount = cpuCount/1; //2개의 컨테이너에 돌릴 예정 CPU수 / 2
 console.log('cpu count: '+ cpuCount);
 console.log('worker count: '+ cpuCount);
 
